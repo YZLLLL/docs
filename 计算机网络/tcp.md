@@ -1,4 +1,4 @@
-**TCP,传输层协议，Transmission Control Protocol）是一种面向连接的、可靠的、基于[字节流](https://baike.baidu.com/item/字节流/3196772?fromModule=lemma_inlink)的[传输层](https://baike.baidu.com/item/传输层/4329536?fromModule=lemma_inlink)[通信协议](https://baike.baidu.com/item/通信协议/3351624?fromModule=lemma_inlink)**
+**TCP,传输层协议，Transmission Control Protocol）是一种面向连接的、可靠的、基于[字节流](https://baike.baidu.com/item/字节流/3196772?fromModule=lemma_inlink)的[传输层](https://baike.baidu.com/item/传输层/4329536?fromModule=lemma_inlink)[通信协议](https://baike.baidu.com/item/通信协议/3351624?fromModule=lemma_inlink)，默认首部大小为20字节**
 
 
 
@@ -20,13 +20,11 @@ Acknowledge number(确认号码)
 
 ##### 三次握手
 
-![](E:\learn\js\docs\计算机网络\imgs\三次握手.png)
-
-![.\imgs\三次握手.png]()
+![](.\imgs\三次握手.png)
 
 ##### 四次挥手
 
-
+![](.\imgs\四次挥手.png)
 
 ##### 主要特点
 
