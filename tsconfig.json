@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2018",
+    "noImplicitAny": true,
+  },
+  "compileOnSave": true,
+  "include": [
+    "**/*.ts"
+   ],
+  "exclude": [
+    "node_modules"
+   ]
+}
