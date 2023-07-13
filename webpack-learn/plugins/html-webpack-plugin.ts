@@ -1,4 +1,5 @@
 // 实现一个简单的html-webpack-plugin
+
 // declare class Compiler {
 // 	constructor(context: string, options?: WebpackOptionsNormalized);
 // 	hooks: Readonly<{
@@ -151,8 +152,12 @@ class HtmlWebpackPlugin {
 
     return replacedHtml;
   }
-  getScriptTag(assets: any) {}
-  getStyleTag(assets: any) {}
+  getScriptTag(assets: any):string {
+    return ''
+  }
+  getStyleTag(assets: any):string {
+    return ''
+  }
 }
 
 module.exports = HtmlWebpackPlugin;
