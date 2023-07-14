@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .before {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 800px;
+      background-color: rgb(69, 123, 167);
+    }
+    .after {
+      height: 400px;
+      transform: scale(1);
+      background-color: rgb(154, 101, 207);
+      margin-top: -600px;
+    }
+    img {
+      width: 500px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="before">
+    <img src="../images/js加载.png" alt="">
+  </div>
+  <div class="after">下面挡住了上面的盒子，图片在上面的盒子中，却没有被挡住</div>
+</body>
+<script>
+  /**
+   * img是可替换元素，对于img来说，先渲染框架预留位置，然后再替换上去
+   * 将 gpu 绘制页面 想象成 绘画，后画的肯定会覆盖先前的
+   * 如何解决： 分层。将 before 单独分为一层即可，可以使用影响分层的 css 属性
+   * 
+   * 例如： 使用 position + z-index
+   *        使用 transform (transform会使 层级提升（相对于z-index的效果），这里应该给after设置)
+   * 
+   * 解析HTML：浏览器首先解析HTML代码，识别出可替换元素的标签和属性。 
+   * 
+   * 创建元素框架：浏览器根据可替换元素的标签创建相应的元素框架。这个框架包含了元素的位置、大小等信息。 
+   *  
+   * 加载外部资源：如果可替换元素需要加载外部资源，例如图片、视频等，浏览器会发起网络请求，获取这些资源。 
+   *  
+   * 计算尺寸：浏览器根据可替换元素的属性或外部资源的实际尺寸，计算元素的宽度和高度。例如，对于 <img> 元素，可以通过 width 和 height 属性指定宽度和高度，或者根据实际图片的宽高来计算。 
+   *  
+   * 显示内容：根据外部资源的加载情况和可替换元素的属性，浏览器将外部资源渲染到元素框架中。例如，对于 <img> 元素，浏览器会将图片渲染到元素框架中显示出来。 
+   *  
+   * 应用样式：可替换元素可以有默认的样式规则，也可以受到CSS样式表的影响。浏览器会根据这些样式规则，对可替换元素进行样式的应用。 
+   *
+   *  
+   **/
+</script>
+</html>
+
