@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const worker = new Worker('./worker.js');
+    worker.postMessage(99999999); // 将需要大量计算等花费时间的活交给 web worker 去做，避免 主线程 计算，页面可能会出现卡顿
+    worker.addEventListener("message", function (event) {
+      console.log(event);
+      console.log(event.data);
+    })
+  </script>
+</body>
+</html>
