@@ -1,5 +1,5 @@
 function myNew(fn, ...args) {
-  let obj = Object.create(Person.prototype);
+  let obj = Object.create(fn.prototype);
   let result = fn.apply(obj, args);
   if (
     typeof result === "function" ||
