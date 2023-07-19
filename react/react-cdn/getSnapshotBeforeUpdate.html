@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>state</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/prop-types.js"></script>
+    <style>
+      .list{
+        height: 200px;
+        width: 100px;
+        background-color: skyblue;
+        overflow: auto;
+      }
+      .news{
+        height: 40px;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 通过修改元素的scrollTop属性，让内容不动
+      class NewsList extends React.Component{
+        state = {newsArr:[]}
+        getElementList = (c)=>{
+          this.list = c
+        }
+        componentDidMount(){
+          // 设置定时器，每500ms多渲染一个div
+          setInterval(()=>{
+            const {newsArr} = this.state
+            const news = `新闻${newsArr.length+1}`
+            this.setState({newsArr:[news,...newsArr]})
+          },500)
+        }
+        getSnapshotBeforeUpdate(){
+          // 更新前返回此时元素的内容区域高度
+          return this.list.scrollHeight
+        }
+        componentDidUpdate(preProps,preState,height){
+          // 修改scrollTop
+          this.list.scrollTop += this.list.scrollHeight - height
+        }
+        render(){
+          return (
+            <div className="list" ref={this.getElementList}>
+              {this.state.newsArr.map((v,i)=><div className="news" key={i}>{v}</div>)}  
+            </div>
+          )
+        }
+      }
+      ReactDOM.render(<NewsList  />,document.getElementById('root'))
+    </script>
+</body>
+
+</html>

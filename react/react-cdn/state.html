@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>state</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/prop-types.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class MyComponent extends React.Component{ 
+            constructor(props){ 
+                super(props); 
+                this.state = { 
+                    isHot: true 
+                }; 
+                this.handleClick = this.handleClick.bind(this) 
+            } 
+            
+            render(){ 
+              console.log(this);
+                return (<h1 onClick={this.handleClick}>{this.props.age}岁的{this.props.name}(性别：{this.props.sex})觉得今天天气很{this.state.isHot ? "炎热" : "凉爽"}</h1>) 
+            } 
+            
+            handleClick(){ 
+                this.setState({isHot:!this.state.isHot}) 
+            } 
+        } 
+        
+        // props类型检查
+        MyComponent.propTypes = {
+          name:PropTypes.string.isRequired, // 类型为string，且为必须props
+          age:PropTypes.number, // 类型为number
+          sex:PropTypes.string,
+          // fn:PropTypes.func // function类型为func
+        }
+
+        // props默认值
+        MyComponent.defaultProps = {
+          age:18,
+          sex:'未知'
+        }
+
+        ReactDOM.render(<MyComponent name="张三" age={18} />,document.getElementById('root'))
+    </script>
+</body>
+
+</html>
