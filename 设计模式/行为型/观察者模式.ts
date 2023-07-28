@@ -6,16 +6,19 @@ class Subject {
   public observers: Observer[] = [];
   constructor() {}
 
+  // 添加观察者
   addObserver(observer: Observer): this {
     this.observers.push(observer);
     return this;
   }
 
+  // 移除观察者
   removeObserver(observer: Observer): this {
     this.observers = this.observers.filter(o => o !== observer);
     return this;
   }
 
+  // 通知观察者们
   notify(message: string): void {
     for (const observer of this.observers) {
       observer.update(message);

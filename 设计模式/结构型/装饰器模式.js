@@ -4,26 +4,25 @@
  * 装饰器模式通过将对象包装在一个装饰器类中，然后将装饰器类与原始对象进行组合，从而实现对对象的功能扩展。
  */
 var Component = /** @class */ (function () {
-    function Component() {
-    }
-    Component.prototype.operation = function () {
-        console.log("执行原本的操作");
-    };
-    return Component;
-}());
+  function Component() {}
+  Component.prototype.operation = function () {
+    console.log("执行原本的操作");
+  };
+  return Component;
+})();
 var Decorator = /** @class */ (function () {
-    function Decorator(component) {
-        this.component = component;
-    }
-    Decorator.prototype.operation = function () {
-        this.component.operation();
-        this.additionalOperation();
-    };
-    Decorator.prototype.additionalOperation = function () {
-        console.log("执行装饰器提供的额为操作");
-    };
-    return Decorator;
-}());
+  function Decorator(component) {
+    this.component = component;
+  }
+  Decorator.prototype.operation = function () {
+    this.component.operation();
+    this.additionalOperation();
+  };
+  Decorator.prototype.additionalOperation = function () {
+    console.log("执行装饰器提供的额为操作");
+  };
+  return Decorator;
+})();
 var component = new Component();
 var decorator = new Decorator(component);
 decorator.operation();
@@ -33,4 +32,4 @@ decorator.operation();
  * 然后执行额外的操作。通过将装饰器类与原始对象组合，可以动态地给原始对象添加新的功能，而无需修改原始对象的接口。
  * 装饰器模式可以用于动态地给对象添加新的行为，而不需要对现有对象进行修改。
  * 它在需要扩展对象功能时非常有用，同时也遵循了开闭原则（对扩展开放，对修改关闭）。
- */ 
+ */
