@@ -11,7 +11,7 @@ function debounce(fn, duration = 500) {
 
 // 节流
 // 定时器方式
-function throlle(fn, duration = 500) {
+function throttle(fn, duration = 500) {
   let timeId;
   return function (...args) {
     if (!timeId) {
@@ -23,7 +23,7 @@ function throlle(fn, duration = 500) {
   };
 }
 // 时间戳方式
-function throlle(fn, duration = 500) {
+function throttle(fn, duration = 500) {
   let pre = Date.now();
   return function (...args) {
     const cur = Date.now();
