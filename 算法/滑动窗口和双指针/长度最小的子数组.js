@@ -11,29 +11,29 @@
  */
 
 /**
- * 
+ *
  */
 function minSubArrayLen(target, nums) {
-    var len = nums.length;
-    var slow = 0;
-    var fast = 1;
-    var result = len + 1;
-    var temp = nums[slow];
-    if (temp >= target) return 1;
-    while (fast < len) {
-      temp += nums[fast];
-      if (temp >= target) {
-        while (temp - nums[slow] >= target && slow <= fast) {
-          temp -= nums[slow];
-          slow++;
-        }
-        result = Math.min(result, fast - slow + 1);
+  var len = nums.length;
+  var slow = 0;
+  var fast = 1;
+  var result = len + 1;
+  var temp = nums[slow];
+  if (temp >= target) return 1;
+  while (fast < len) {
+    temp += nums[fast];
+    if (temp >= target) {
+      while (temp - nums[slow] >= target && slow <= fast) {
+        temp -= nums[slow];
+        slow++;
       }
-      fast++;
+      result = Math.min(result, fast - slow + 1);
     }
-    if (result > len) {
-      result = 0;
-    }
-    return result;
+    fast++;
+  }
+  if (result > len) {
+    result = 0;
+  }
+  return result;
 }
-console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3]));
+console.log(minSubArrayLen(7, [1, 1, 3, 4, 2, 3]));
