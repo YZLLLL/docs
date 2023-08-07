@@ -2,7 +2,7 @@ Function.prototype.myCall = function (context, ...args) {
   context = context || window;
   const uniqueKey = symbol();
   context[uniqueKey] = this; // this 就是调用者，就是调用call的函数
-  const result = context[symbol](...args);
+  const result = context[uniqueKey](...args);
   delete context[uniqueKey];
   return result;
 };
