@@ -11,6 +11,7 @@ export default class Dep {
   }
 
   depend() {
+    
     if(Dep.target) {
       this.addWatcher(Dep.target);
     }

@@ -1,3 +1,6 @@
+
+
+
 declare class MyVuexStore {
   commit(eventName: string, data:any): void;
   dispatch(eventName: string, data:any): void;

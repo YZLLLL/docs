@@ -13,7 +13,7 @@ let data = {
 };
 
 observe(data);
-new Watcher(data, "a.b.c.d", (value) => {
+new Watcher(data, "a.b.c", (value) => {
   console.log("adaad", value);
 });
 new Watcher(data, "arr", (value) => {
