@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3"></script>
+  <title>Document</title>
+  <style>
+    .panel-item {
+      /* padding: 5px; */
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 5px;
+      text-align: center;
+      line-height: 20px;
+      /* vertical-align: middle; */
+      border: 1px solid #999;
+    }
+    .no-show {
+      background-color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <div style="display: flex" v-for="(rows, rowIndex) in data">
+        <template v-for="(item, colIndex) in rows">
+          <span class="panel-item no-show" v-if="!item.show" @click="clickMine(rowIndex, colIndex)"></span>
+          <span class="panel-item" v-else>
+            {{ item.value === 1 ? "雷" : item.near }} 
+          </span>
+        </template>
+      </div>
+    </div>
+  </div>
+  <script src="./panel.js"></script>
+  <script>
+    const { createApp, reactive, ref, nextTick } = Vue;
+    
+    const panel = new Panel(10, 10, 10);
+    panel.init();
+
+    createApp({
+      setup() {
+        
+        const data = reactive(panel.panel);
+        let gameOver = false;
+        function clickMine(rowIndex, colIndex) {
+          data[rowIndex][colIndex].show = true;
+          if (data[rowIndex][colIndex].value === 1) {
+            gameOver = true;
+            // nextTick().then(() => {
+            //   alert("游戏结束");
+            // })
+          } else {
+            data[rowIndex][colIndex].near = panel.getMineValue(rowIndex, colIndex);
+          }
+        }
+        return {
+          data,
+          clickMine
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>
