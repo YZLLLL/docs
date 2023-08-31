@@ -25,3 +25,5 @@ to do list
 - ~~XSS / CRFS~~
 
 - computed / wtach / ref / reactive 源码
+
+如何做到批次更新

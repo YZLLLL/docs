@@ -3,11 +3,12 @@ export default class Watcher {
   constructor(target, expression, cb) {
     this.target = target;
     this.callback = cb;
-    this.getter = parsePath(expression);
+    this.getter = parsePath(expression); // 获取 "a.b.c" 对应的值
     this.value = this.get();
   }
 
   update() {
+    console.log("update")
     this.getAndInvoke();
   }
 
